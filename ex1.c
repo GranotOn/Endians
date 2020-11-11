@@ -6,7 +6,7 @@ typedef union
     unsigned long i;
 } bytes;
 /**
- * We will store '1' and check the last byte.
+ * We will store '1' and check the first address.
  * If it is 1 - the machine is big endian - we will return 1
  * If it is 0 - the machine is small endian - we will return 0
  **/
