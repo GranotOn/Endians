@@ -37,10 +37,12 @@ unsigned long merge_bytes(unsigned long x, unsigned long int y)
 
     int big_endian = is_big_endian();
 
-    for (int idx = 0; idx < sizeof(unsigned long); ++idx)
+    int idx;
+    int threshold = (sizeof(unsigned long) - 1) / 2;
+    for (idx = 0; idx < sizeof(unsigned long); ++idx)
     { // Set each array with the apropriate byte
-        z.p[idx] = (big_endian) ? ((idx <= 3) ? bx.p[idx] : by.p[idx]) 
-                                : ((idx <= 3) ? by.p[idx] : bx.p[idx]);
+        z.p[idx] = (big_endian) ? ((idx <= threshold) ? bx.p[idx] : by.p[idx]) 
+                                : ((idx <= threshold) ? by.p[idx] : bx.p[idx]);
     }
 
     return z.i;
